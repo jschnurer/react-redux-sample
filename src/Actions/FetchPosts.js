@@ -16,6 +16,7 @@ export default function fetchPosts() {
         // If you'd like to see the fetch fail, try replacing the fetch url with this:
         // "https://asdffasdfj8439fj34asdf.com/apithatdoesntexist"
 
+        // The variable process.env.REACT_APP_POSTS_API_URL is defined in the .env file.
         return fetch(process.env.REACT_APP_POSTS_API_URL)
             .then(response => {
                 if(!response.ok) {
