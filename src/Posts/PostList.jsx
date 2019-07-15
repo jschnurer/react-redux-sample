@@ -29,7 +29,7 @@ const PostList = () => {
         return <StatusBlock status={"info"}>No posts found. Please refresh the list.</StatusBlock>;
     }
 
-    // If a fetch isn't happening yet and there is no error, the posts will be shown.
+    // If a fetch isn't happening and there is no error, the posts will be shown.
     return (
         <Fragment>
             {posts.map(post => <Post key={post.id} {...post} />)}
