@@ -1,3 +1,5 @@
+import _cloneDeep from 'lodash/cloneDeep';
+
 // This is the initial state for the reducer.
 // The properties are initialized to their defaults.
 const INITIAL_STATE = {
@@ -38,6 +40,18 @@ function PostReducer(state = INITIAL_STATE, action) {
                 fetchingPosts: false,
                 fetchError: action.fetchError,
             });
+        case 'ADD_NEW_POST':
+            {
+                // add the post to the list
+                let stateClone = _cloneDeep(state);
+                stateClone.posts.push({
+                    title: action.title,
+                    body: action.body,
+                    id: (Math.min.apply(null, (stateClone.posts.map(x => x.id))) || 0) - 1,
+                });
+
+                return stateClone;
+            }
         default:
             return state;
     }
